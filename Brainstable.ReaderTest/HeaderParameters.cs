@@ -33,6 +33,11 @@ namespace Brainstable.ReaderTest
             return regex.IsMatch(strHeader);
         }
 
+        public HeaderParameters()
+        {
+            SchemaParameters = new List<SchemaParameter>();
+        }
+
         public static HeaderParameters CreateHeaderParameters(string strHeader)
         {
             if (strHeader.Length == 0)
@@ -66,7 +71,6 @@ namespace Brainstable.ReaderTest
             {
                 headerParameters = new HeaderParameters();
                 headerParameters.StringLine = strHeader;
-                headerParameters.SchemaParameters = new List<SchemaParameter>();
                 for (int i = 0; i < countParameters; i++)
                 {
                     headerParameters.SchemaParameters.Add(new SchemaParameter

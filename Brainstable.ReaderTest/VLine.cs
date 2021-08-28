@@ -28,11 +28,16 @@ namespace Brainstable.ReaderTest
         /// Строка
         /// </summary>
         public string StringLine { get; set; }
+
+        public VLine()
+        {
+            Parameters = new List<string>();
+        }
         
         /// <summary>
         /// Соответствие строки заголовка параметров паттерну
         /// </summary>
-        /// <param name="strHeader">Строка заголовка параметров</param>
+        /// <param name="line">Строка заголовка параметров</param>
         /// <returns>True - строка заголовка параметров соответствует паттерну</returns>
         public static bool IsMatch(string line)
         {
@@ -65,7 +70,6 @@ namespace Brainstable.ReaderTest
             vLine.StringLine = line;
             vLine.VarietyId = arr[0];
             vLine.Group = arr[1];
-            vLine.Parameters = new List<string>();
             int n = 2;
             if (countParameters > 0)
             {

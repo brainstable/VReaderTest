@@ -93,7 +93,7 @@ namespace Brainstable.ReaderTest
         /// <summary>
         /// Строка заголовка
         /// </summary>
-        public string StringHeader { get; set; }
+        public string StringLine { get; set; }
 
         #region Ctors
         
@@ -109,7 +109,7 @@ namespace Brainstable.ReaderTest
 
         public Header(Header header)
         {
-            StringHeader = header.StringHeader;
+            StringLine = header.StringLine;
             Local = header.Local;
             Specification = header.Specification;
             Culture = header.Culture;
@@ -166,7 +166,7 @@ namespace Brainstable.ReaderTest
             if (arr.Length == 18)
             {
                 header = new Header();
-                header.StringHeader = strHeader;
+                header.StringLine = strHeader;
                 header.Local = arr[0];
                 header.Specification = arr[1];
                 header.Culture = arr[2];

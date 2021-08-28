@@ -6,7 +6,11 @@ namespace Brainstable.ReaderTest
     {
         private const int COUNT_CHARS = 83;
         const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
-        
+
+        /// <summary>
+        /// Идентификатор опыта (номер опыта в рамках одного центра и одной культуры уникален)
+        /// </summary>
+        public string Id => $"{NumberCenter}{Culture}{NumberTest2}";
         /// <summary>
         /// Место проведения опыта (код места - 8 цифр)
         /// </summary>

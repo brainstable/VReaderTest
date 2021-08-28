@@ -26,7 +26,7 @@ namespace Brainstable.ReaderTest
         /// Соответствие строки НСР паттерну
         /// </summary>
         /// <param name="line">Строка НСР</param>
-        /// <returns>True - строка заголовка параметров соответствует паттерну</returns>
+        /// <returns>True - строка НСР соответствует паттерну</returns>
         public static bool IsMatch(string line)
         {
             Regex regex = new Regex(PATTERN);

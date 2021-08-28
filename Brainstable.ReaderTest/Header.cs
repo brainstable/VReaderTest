@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Brainstable.ReaderTest
 {
@@ -6,7 +7,8 @@ namespace Brainstable.ReaderTest
     {
         private const int COUNT_CHARS = 83;
         const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
-
+        const string PATTERN = "[0-9]{8} [1-9]{5} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{2} [0-9]{3} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{1} [0-9]{4} [0-9]{2} [0-9]{4} [0-1]{1}";
+        
         /// <summary>
         /// ИД опыта (номер опыта в рамках одного центра и одной культуры уникален)
         /// </summary>
@@ -94,6 +96,17 @@ namespace Brainstable.ReaderTest
         public string StringHeader { get; set; }
 
         /// <summary>
+        /// Соответствие строки заголовка паттерну
+        /// </summary>
+        /// <param name="strHeader">Строка заголовка</param>
+        /// <returns>True -  строка заголовка соответствует паттерну</returns>
+        public static bool IsMatch(string strHeader)
+        {
+            Regex regex = new Regex(PATTERN);
+            return regex.IsMatch(strHeader);
+        }
+
+        /// <summary>
         /// Создание Header из строки заголовка
         /// </summary>
         /// <param name="strHeader">Строка заголовка</param>
@@ -104,6 +117,11 @@ namespace Brainstable.ReaderTest
             if (strHeader.Length != COUNT_CHARS)
             {
                 throw new Exception("");
+            }
+            
+            if (!IsMatch(strHeader))
+            {
+                throw new Exception("Regex");
             }
 
             Header header = null;

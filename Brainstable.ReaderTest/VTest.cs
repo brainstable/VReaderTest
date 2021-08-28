@@ -7,7 +7,7 @@
         public VBody VBody { get; set; }
         public VNsr VNsr { get; set; }
         public Footer Footer { get; set; }
-        
-        
+        public bool IsHeaderParameters { get; set; }
+        public bool IsVNsr { get; set; }
     }
 }

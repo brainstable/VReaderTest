@@ -14,6 +14,10 @@ namespace Brainstable.ReaderTest
         /// </summary>
         public IList<SchemaParameter> SchemaParameters { get; set; }
         /// <summary>
+        /// Количество параметров
+        /// </summary>
+        public int Count => SchemaParameters?.Count ?? 0;
+        /// <summary>
         /// Строка заголовка параметров
         /// </summary>
         public string StringLine { get; set; }
@@ -29,7 +33,7 @@ namespace Brainstable.ReaderTest
             return regex.IsMatch(strHeader);
         }
 
-        public static HeaderParameters CreateHeader2(string strHeader)
+        public static HeaderParameters CreateHeaderParameters(string strHeader)
         {
             if (strHeader.Length == 0)
             {

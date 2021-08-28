@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Brainstable.ReaderTest
 {
-    public class Header
+    public class Header : ICloneable
     {
         private const int COUNT_CHARS = 83;
         const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
@@ -93,7 +93,44 @@ namespace Brainstable.ReaderTest
         /// <summary>
         /// Строка заголовка
         /// </summary>
-        public string StringHeader { get; set; }
+        public string StringLine { get; set; }
+
+        #region Ctors
+        
+        public Header()
+        {
+            
+        }
+
+        public Header(string strHeader) : this(CreateHeader(strHeader))
+        {
+            
+        }
+
+        public Header(Header header)
+        {
+            StringLine = header.StringLine;
+            Local = header.Local;
+            Specification = header.Specification;
+            Culture = header.Culture;
+            GroupPredecessor = header.GroupPredecessor;
+            NumberTest = header.NumberTest;
+            CountParameters = header.CountParameters;
+            CountVarieties = header.CountVarieties;
+            DateHarvest = header.DateHarvest;
+            YearHarvest = header.YearHarvest;
+            DateCreated = header.DateCreated;
+            YearCreated = header.YearCreated;
+            DateEdited = header.DateEdited;
+            YearCreated = header.YearEdited;
+            TypeData = header.TypeData;
+            CulturePredecessor = header.CulturePredecessor;
+            NumberCenter = header.NumberCenter;
+            NumberTest2 = header.NumberTest2;
+            QualityAttribute = header.QualityAttribute;
+        }
+        
+        #endregion
 
         /// <summary>
         /// Соответствие строки заголовка паттерну
@@ -129,7 +166,7 @@ namespace Brainstable.ReaderTest
             if (arr.Length == 18)
             {
                 header = new Header();
-                header.StringHeader = strHeader;
+                header.StringLine = strHeader;
                 header.Local = arr[0];
                 header.Specification = arr[1];
                 header.Culture = arr[2];
@@ -150,6 +187,11 @@ namespace Brainstable.ReaderTest
                 header.QualityAttribute = arr[17];
             }
             return header;
+        }
+
+        public object Clone()
+        {
+            return new Header(this);
         }
     }
 }

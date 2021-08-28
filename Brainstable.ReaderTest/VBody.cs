@@ -1,6 +1,6 @@
 ﻿namespace Brainstable.ReaderTest
 {
-    public class Body
+    public class VBody
     {
         
     }

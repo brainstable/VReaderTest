@@ -1,10 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brainstable.ReaderTest", "Brainstable.ReaderTest\Brainstable.ReaderTest.csproj", "{5338ED6D-9E0A-4269-9661-88BDADFD7983}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brainstable.ReaderVTest", "Brainstable.ReaderTest\Brainstable.ReaderVTest.csproj", "{5338ED6D-9E0A-4269-9661-88BDADFD7983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brainstable.ReaderTest.Test", "Brainstable.ReaderTest.Test\Brainstable.ReaderTest.Test.csproj", "{9C864603-7948-47D5-AFB7-2A36EE2D492C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brainstable.ReaderVTest.Test", "Brainstable.ReaderTest.Test\Brainstable.ReaderVTest.Test.csproj", "{9C864603-7948-47D5-AFB7-2A36EE2D492C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brainstable.ReaderTest.Console", "Brainstable.ReaderTest.Console\Brainstable.ReaderTest.Console.csproj", "{E38AAC49-C2A2-4DA2-B67A-DABBCA89B8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brainstable.ReaderVTest.Console", "Brainstable.ReaderTest.Console\Brainstable.ReaderVTest.Console.csproj", "{E38AAC49-C2A2-4DA2-B67A-DABBCA89B8EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +27,11 @@ Global
 		{E38AAC49-C2A2-4DA2-B67A-DABBCA89B8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38AAC49-C2A2-4DA2-B67A-DABBCA89B8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E38AAC49-C2A2-4DA2-B67A-DABBCA89B8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F90D2030-99B2-4BBB-900E-55F5C115B2F7}
 	EndGlobalSection
 EndGlobal

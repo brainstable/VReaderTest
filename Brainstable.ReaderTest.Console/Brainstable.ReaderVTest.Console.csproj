@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Brainstable.ReaderTest\Brainstable.ReaderTest.csproj" />
+      <ProjectReference Include="..\Brainstable.ReaderTest\Brainstable.ReaderVTest.csproj" />
     </ItemGroup>
 
     <ItemGroup>

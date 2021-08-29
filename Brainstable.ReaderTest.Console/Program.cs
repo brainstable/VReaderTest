@@ -10,7 +10,7 @@ namespace Brainstable.ReaderTest.Console
         {
             List<string> listId = new List<string>();
             
-            List<VTest> list = VReader.Read(fileName);
+            List<VTest> list = VReader.ReadFast(fileName);
 
             foreach (var vTest in list)
             {

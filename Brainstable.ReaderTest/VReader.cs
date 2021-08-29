@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Brainstable.ReaderTest
 {
-    public class Reader
+    public class VReader
     {
         public static List<VTest> Read(string fileName)
         {
@@ -16,22 +16,23 @@ namespace Brainstable.ReaderTest
             VTest vTest = null;
             for (int i = 0; i < arr.Length; i++)
             {
-                if (Header.IsMatch(arr[i]))
+                if (VHeader.IsMatch(arr[i]))
                 {
                     if (end)
                     {
                         start = true;
                         end = false;
                         vTest = new VTest();
-                        vTest.Header = Header.CreateHeader(arr[i]);
+                        vTest.VHeader = VHeader.CreateHeader(arr[i]);
                         vTest.VBody = new VBody();
                         continue;
                     }
                 }
 
-                if (HeaderParameters.IsMatch(arr[i]))
+                if (VHeaderParameters.IsMatch(arr[i]))
                 {
-                    vTest.HeaderParameters = HeaderParameters.CreateHeaderParameters(arr[i]);
+                    vTest.VHeaderParameters = VHeaderParameters.CreateHeaderParameters(arr[i]);
+                    vTest.IsHeaderParameters = true;
                     continue;
                 }
 
@@ -41,9 +42,16 @@ namespace Brainstable.ReaderTest
                     continue;
                 }
 
-                if (Footer.IsMatch(arr[i]))
+                if (VNsr.IsMatch(arr[i]))
                 {
-                    vTest.Footer = Footer.CreateFooter(arr[i]);
+                    vTest.VNsr = VNsr.CreateVNsr(arr[i]);
+                    vTest.IsVNsr = true;
+                    continue;
+                }
+
+                if (VFooter.IsMatch(arr[i]))
+                {
+                    vTest.VFooter = VFooter.CreateFooter(arr[i]);
                     vTests.Add(vTest);
                     start = false;
                     end = true;

@@ -21,7 +21,12 @@ namespace Brainstable.ReaderTest
         {
             Nsrs = new List<string>();
         }
-        
+
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки НСР паттерну
         /// </summary>

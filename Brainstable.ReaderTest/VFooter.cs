@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Brainstable.ReaderTest
 {
-    public class Footer
+    public class VFooter
     {
         private const string PATTERN = @"\b[E]\w+";
         
@@ -16,6 +16,11 @@ namespace Brainstable.ReaderTest
         /// </summary>
         public string StringLine { get; set; }
 
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки конца записи паттерну
         /// </summary>
@@ -27,7 +32,7 @@ namespace Brainstable.ReaderTest
             return regex.IsMatch(line);
         }
 
-        public static Footer CreateFooter(string line)
+        public static VFooter CreateFooter(string line)
         {
             if (line.Length == 0)
             {
@@ -39,14 +44,14 @@ namespace Brainstable.ReaderTest
                 throw new Exception("Regex");
             }
 
-            Footer footer = null;
+            VFooter vFooter = null;
             if (line.Trim() == "END")
             {
-                footer = new Footer();
-                footer.StringLine = line;
+                vFooter = new VFooter();
+                vFooter.StringLine = line;
             }
 
-            return footer;
+            return vFooter;
         }
     }
 }

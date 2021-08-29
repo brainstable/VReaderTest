@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Brainstable.ReaderTest\Brainstable.ReaderTest.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="data" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="data\S2020_47" />
+      <Resource Include="data\S2020_47">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+</Project>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Brainstable.ReaderTest.Console
 {
@@ -8,14 +9,23 @@ namespace Brainstable.ReaderTest.Console
         
         static void Main(string[] args)
         {
-            List<string> listId = new List<string>();
+            //List<string> listId = new List<string>();
             
             List<VTest> list = VReader.ReadFast(fileName);
 
-            foreach (var vTest in list)
+            //foreach (var vTest in list)
+            //{
+            //    listId.Add(vTest.Identificator);
+            //}
+
+            string dir = "data\\zona\\zona11";
+            string[] files = Directory.GetFiles(dir);
+
+            for (int i = 0; i < files.Length; i++)
             {
-                listId.Add(vTest.Identificator);
+                list.AddRange(VReader.ReadFast(files[i]));
             }
+
             System.Console.ReadKey();
         }
     }

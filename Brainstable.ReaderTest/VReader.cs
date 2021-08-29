@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata;
 
 namespace Brainstable.ReaderTest
 {
@@ -18,20 +17,15 @@ namespace Brainstable.ReaderTest
             
             string[] arr = File.ReadAllLines(fileName);
             
-            bool end = true;
             VTest test = null;
             for (int i = 0; i < arr.Length; i++)
             {
                 if (VHeader.IsMatch(arr[i]))
                 {
-                    if (end)
-                    {
-                        end = false;
-                        test = new VTest();
-                        test.VHeader = VHeader.CreateHeader(arr[i]);
-                        test.VBody = new VBody();
-                        continue;
-                    }
+                    test = new VTest();
+                    test.VHeader = VHeader.CreateHeader(arr[i]);
+                    test.VBody = new VBody();
+                    continue;
                 }
 
                 if (VHeaderParameters.IsMatch(arr[i]))
@@ -58,8 +52,6 @@ namespace Brainstable.ReaderTest
                 {
                     test.VFooter = VFooter.CreateFooter(arr[i]);
                     tests.Add(test);
-                    end = true;
-                    continue;
                 }
             }
             
@@ -78,20 +70,15 @@ namespace Brainstable.ReaderTest
             try
             {
                 string line;
-                bool end = true;
                 VTest test = null;
                 while ((line = file.ReadLine()) != null)
                 {
                     if (VHeader.IsMatch(line))
                     {
-                        if (end)
-                        {
-                            end = false;
-                            test = new VTest();
-                            test.VHeader = VHeader.CreateHeader(line);
-                            test.VBody = new VBody();
-                            continue;
-                        }
+                        test = new VTest();
+                        test.VHeader = VHeader.CreateHeader(line);
+                        test.VBody = new VBody();
+                        continue;
                     }
 
                     if (VHeaderParameters.IsMatch(line))
@@ -118,17 +105,16 @@ namespace Brainstable.ReaderTest
                     {
                         test.VFooter = VFooter.CreateFooter(line);
                         tests.Add(test);
-                        end = true;
-                        continue;
                     }
                 }
             }
             catch (IOException ex)
             {
+                throw new IOException();
             }
             catch (Exception ex)
             {
-
+                throw new Exception();
             }
             finally
             {

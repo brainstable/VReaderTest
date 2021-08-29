@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Brainstable.ReaderTest;
+﻿using System.Collections.Generic;
 
 namespace Brainstable.ReaderTest.Console
 {
@@ -11,7 +8,14 @@ namespace Brainstable.ReaderTest.Console
         
         static void Main(string[] args)
         {
+            List<string> listId = new List<string>();
+            
             List<VTest> list = VReader.Read(fileName);
+
+            foreach (var vTest in list)
+            {
+                listId.Add(vTest.Identificator);
+            }
             System.Console.ReadKey();
         }
     }

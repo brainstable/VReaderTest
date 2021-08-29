@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace Brainstable.ReaderTest
 {
-    public class VHeader : ICloneable
+    public class VHeader
     {
         private const int COUNT_CHARS = 83;
-        const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
-        const string PATTERN = "[0-9]{8} [1-9]{5} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{2} [0-9]{3} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [1-2]{1} [0-9]{4} [0-9]{2} [0-9]{4} [0-1]{1}";
+        private const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
+        private const string PATTERN = "[0-9]{8} [1-9]{5} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{2} [0-9]{3} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [1-2]{1} [0-9]{4} [0-9]{2} [0-9]{4} [0-1]{1}";
         
         /// <summary>
         /// ИД опыта (номер опыта в рамках одного центра и одной культуры уникален)
@@ -95,41 +95,6 @@ namespace Brainstable.ReaderTest
         /// </summary>
         public string StringLine { get; set; }
 
-        #region Ctors
-        
-        public VHeader()
-        {
-        }
-
-        public VHeader(string strHeader) : this(CreateHeader(strHeader))
-        {
-        }
-
-        public VHeader(VHeader vHeader)
-        {
-            StringLine = vHeader.StringLine;
-            Local = vHeader.Local;
-            Specification = vHeader.Specification;
-            Culture = vHeader.Culture;
-            GroupPredecessor = vHeader.GroupPredecessor;
-            NumberTest = vHeader.NumberTest;
-            CountParameters = vHeader.CountParameters;
-            CountVarieties = vHeader.CountVarieties;
-            DateHarvest = vHeader.DateHarvest;
-            YearHarvest = vHeader.YearHarvest;
-            DateCreated = vHeader.DateCreated;
-            YearCreated = vHeader.YearCreated;
-            DateEdited = vHeader.DateEdited;
-            YearCreated = vHeader.YearEdited;
-            TypeData = vHeader.TypeData;
-            CulturePredecessor = vHeader.CulturePredecessor;
-            NumberCenter = vHeader.NumberCenter;
-            NumberTest2 = vHeader.NumberTest2;
-            QualityAttribute = vHeader.QualityAttribute;
-        }
-        
-        #endregion
-
         public override string ToString()
         {
             return StringLine;
@@ -190,11 +155,6 @@ namespace Brainstable.ReaderTest
                 vHeader.QualityAttribute = arr[17];
             }
             return vHeader;
-        }
-
-        public object Clone()
-        {
-            return new VHeader(this);
         }
     }
 }

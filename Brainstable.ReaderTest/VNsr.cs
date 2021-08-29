@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     public class VNsr
     {

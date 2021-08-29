@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Brainstable.ReaderTest.Test
+namespace Brainstable.ReaderVTest.Test
 {
     public class TestHeader
     {

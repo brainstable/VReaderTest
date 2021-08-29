@@ -1,4 +1,4 @@
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     /// <summary>
     /// Множитель - Код показателя

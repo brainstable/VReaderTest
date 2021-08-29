@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     /// <summary>
     /// Текстово-табличное представление сортоопыта

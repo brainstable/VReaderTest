@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     public static class VReader
     { 

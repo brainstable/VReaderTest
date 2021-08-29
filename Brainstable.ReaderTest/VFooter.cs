@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     public class VFooter
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Brainstable.ReaderTest.Console
+namespace Brainstable.ReaderVTest.Console
 {
     class Program
     {

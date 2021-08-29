@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Brainstable.ReaderTest
 {
@@ -24,6 +25,28 @@ namespace Brainstable.ReaderTest
         {
             Regex regex = new Regex(PATTERN);
             return regex.IsMatch(line);
+        }
+
+        public static Footer CreateFooter(string line)
+        {
+            if (line.Length == 0)
+            {
+                throw new Exception("");
+            }
+            
+            if (!IsMatch(line))
+            {
+                throw new Exception("Regex");
+            }
+
+            Footer footer = null;
+            if (line.Trim() == "END")
+            {
+                footer = new Footer();
+                footer.StringLine = line;
+            }
+
+            return footer;
         }
     }
 }

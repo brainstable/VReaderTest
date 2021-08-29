@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     public class VLine
     {
@@ -33,7 +33,12 @@ namespace Brainstable.ReaderTest
         {
             Parameters = new List<string>();
         }
-        
+
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки заголовка параметров паттерну
         /// </summary>
@@ -71,9 +76,10 @@ namespace Brainstable.ReaderTest
             vLine.VarietyId = arr[0];
             vLine.Group = arr[1];
             int n = 2;
-            if (countParameters > 0)
+
+            for (int i = 2; i < arr.Length; i++)
             {
-                vLine.Parameters.Add(arr[n++]);
+                vLine.Parameters.Add(arr[i]);
             }
 
             return vLine;

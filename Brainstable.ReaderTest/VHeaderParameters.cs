@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
-    public class HeaderParameters
+    public class VHeaderParameters
     {
         private const string LINE = "           1 005 1 007 1 008 0 017 1 018 1 362 1 392 1 011";
         private const string PATTERN = "[ ]{11}[0-2]{1} [0-9]{3}";
@@ -12,7 +12,7 @@ namespace Brainstable.ReaderTest
         /// <summary>
         /// Список параметров
         /// </summary>
-        public IList<SchemaParameter> SchemaParameters { get; set; }
+        public IList<VSchemaParameter> SchemaParameters { get; set; }
         /// <summary>
         /// Количество параметров
         /// </summary>
@@ -21,7 +21,12 @@ namespace Brainstable.ReaderTest
         /// Строка заголовка параметров
         /// </summary>
         public string StringLine { get; set; }
-        
+
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки заголовка параметров паттерну
         /// </summary>
@@ -33,12 +38,12 @@ namespace Brainstable.ReaderTest
             return regex.IsMatch(strHeader);
         }
 
-        public HeaderParameters()
+        public VHeaderParameters()
         {
-            SchemaParameters = new List<SchemaParameter>();
+            SchemaParameters = new List<VSchemaParameter>();
         }
 
-        public static HeaderParameters CreateHeaderParameters(string strHeader)
+        public static VHeaderParameters CreateHeaderParameters(string strHeader)
         {
             if (strHeader.Length == 0)
             {
@@ -66,14 +71,14 @@ namespace Brainstable.ReaderTest
                 }
             }
 
-            HeaderParameters headerParameters = null;
+            VHeaderParameters vHeaderParameters = null;
             if (countParameters > 0)
             {
-                headerParameters = new HeaderParameters();
-                headerParameters.StringLine = strHeader;
+                vHeaderParameters = new VHeaderParameters();
+                vHeaderParameters.StringLine = strHeader;
                 for (int i = 0; i < countParameters; i++)
                 {
-                    headerParameters.SchemaParameters.Add(new SchemaParameter
+                    vHeaderParameters.SchemaParameters.Add(new VSchemaParameter
                     {
                         Power = pars[0, i],
                         ParameterId = pars[1, i]
@@ -81,7 +86,7 @@ namespace Brainstable.ReaderTest
                 }
             }
             
-            return headerParameters;
+            return vHeaderParameters;
         }
     }
 }

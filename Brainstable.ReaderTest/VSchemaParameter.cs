@@ -1,9 +1,9 @@
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     /// <summary>
     /// Множитель - Код показателя
     /// </summary>
-    public class SchemaParameter
+    public class VSchemaParameter
     {
         /// <summary>
         /// Множитель - одноразрядное число, показывающее число десятичных знаков в значении показателя

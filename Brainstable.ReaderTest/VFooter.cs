@@ -1,8 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
-    public class Footer
+    public class VFooter
     {
         private const string PATTERN = @"\b[E]\w+";
         
@@ -15,6 +16,11 @@ namespace Brainstable.ReaderTest
         /// </summary>
         public string StringLine { get; set; }
 
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки конца записи паттерну
         /// </summary>
@@ -24,6 +30,28 @@ namespace Brainstable.ReaderTest
         {
             Regex regex = new Regex(PATTERN);
             return regex.IsMatch(line);
+        }
+
+        public static VFooter CreateFooter(string line)
+        {
+            if (line.Length == 0)
+            {
+                throw new Exception("");
+            }
+            
+            if (!IsMatch(line))
+            {
+                throw new Exception("Regex");
+            }
+
+            VFooter vFooter = null;
+            if (line.Trim() == "END")
+            {
+                vFooter = new VFooter();
+                vFooter.StringLine = line;
+            }
+
+            return vFooter;
         }
     }
 }

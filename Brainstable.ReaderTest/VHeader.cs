@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
-    public class Header : ICloneable
+    public class VHeader
     {
         private const int COUNT_CHARS = 83;
-        const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
-        const string PATTERN = "[0-9]{8} [1-9]{5} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{2} [0-9]{3} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [1-2]{1} [0-9]{4} [0-9]{2} [0-9]{4} [0-1]{1}";
+        private const string STR_HEADER = "00030130 11111 1040 0361 0000 05 003 1206 2010 3105 2010 0206 2010 1 1031 01 0001 0";
+        private const string PATTERN = "[0-9]{8} [1-9]{5} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{2} [0-9]{3} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4} [1-2]{1} [0-9]{4} [0-9]{2} [0-9]{4} [0-1]{1}";
         
         /// <summary>
         /// ИД опыта (номер опыта в рамках одного центра и одной культуры уникален)
@@ -95,42 +95,10 @@ namespace Brainstable.ReaderTest
         /// </summary>
         public string StringLine { get; set; }
 
-        #region Ctors
-        
-        public Header()
+        public override string ToString()
         {
-            
+            return StringLine;
         }
-
-        public Header(string strHeader) : this(CreateHeader(strHeader))
-        {
-            
-        }
-
-        public Header(Header header)
-        {
-            StringLine = header.StringLine;
-            Local = header.Local;
-            Specification = header.Specification;
-            Culture = header.Culture;
-            GroupPredecessor = header.GroupPredecessor;
-            NumberTest = header.NumberTest;
-            CountParameters = header.CountParameters;
-            CountVarieties = header.CountVarieties;
-            DateHarvest = header.DateHarvest;
-            YearHarvest = header.YearHarvest;
-            DateCreated = header.DateCreated;
-            YearCreated = header.YearCreated;
-            DateEdited = header.DateEdited;
-            YearCreated = header.YearEdited;
-            TypeData = header.TypeData;
-            CulturePredecessor = header.CulturePredecessor;
-            NumberCenter = header.NumberCenter;
-            NumberTest2 = header.NumberTest2;
-            QualityAttribute = header.QualityAttribute;
-        }
-        
-        #endregion
 
         /// <summary>
         /// Соответствие строки заголовка паттерну
@@ -144,12 +112,12 @@ namespace Brainstable.ReaderTest
         }
 
         /// <summary>
-        /// Создание Header из строки заголовка
+        /// Создание VHeader из строки заголовка
         /// </summary>
         /// <param name="strHeader">Строка заголовка</param>
-        /// <returns>Header</returns>
+        /// <returns>VHeader</returns>
         /// <exception cref="Exception"></exception>
-        public static Header CreateHeader(string strHeader)
+        public static VHeader CreateHeader(string strHeader)
         {
             if (strHeader.Length != COUNT_CHARS)
             {
@@ -161,37 +129,32 @@ namespace Brainstable.ReaderTest
                 throw new Exception("Regex");
             }
 
-            Header header = null;
+            VHeader vHeader = null;
             string[] arr = strHeader.Split(' ');
             if (arr.Length == 18)
             {
-                header = new Header();
-                header.StringLine = strHeader;
-                header.Local = arr[0];
-                header.Specification = arr[1];
-                header.Culture = arr[2];
-                header.GroupPredecessor = arr[3];
-                header.NumberTest = arr[4];
-                header.CountParameters = arr[5];
-                header.CountVarieties = arr[6];
-                header.DateHarvest = arr[7];
-                header.YearHarvest = arr[8];
-                header.DateCreated = arr[9];
-                header.YearCreated = arr[10];
-                header.DateEdited = arr[11];
-                header.YearCreated = arr[12];
-                header.TypeData = arr[13];
-                header.CulturePredecessor = arr[14];
-                header.NumberCenter = arr[15];
-                header.NumberTest2 = arr[16];
-                header.QualityAttribute = arr[17];
+                vHeader = new VHeader();
+                vHeader.StringLine = strHeader;
+                vHeader.Local = arr[0];
+                vHeader.Specification = arr[1];
+                vHeader.Culture = arr[2];
+                vHeader.GroupPredecessor = arr[3];
+                vHeader.NumberTest = arr[4];
+                vHeader.CountParameters = arr[5];
+                vHeader.CountVarieties = arr[6];
+                vHeader.DateHarvest = arr[7];
+                vHeader.YearHarvest = arr[8];
+                vHeader.DateCreated = arr[9];
+                vHeader.YearCreated = arr[10];
+                vHeader.DateEdited = arr[11];
+                vHeader.YearEdited = arr[12];
+                vHeader.TypeData = arr[13];
+                vHeader.CulturePredecessor = arr[14];
+                vHeader.NumberCenter = arr[15];
+                vHeader.NumberTest2 = arr[16];
+                vHeader.QualityAttribute = arr[17];
             }
-            return header;
-        }
-
-        public object Clone()
-        {
-            return new Header(this);
+            return vHeader;
         }
     }
 }

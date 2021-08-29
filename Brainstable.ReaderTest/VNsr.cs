@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Brainstable.ReaderTest
+namespace Brainstable.ReaderVTest
 {
     public class VNsr
     {
@@ -21,7 +21,12 @@ namespace Brainstable.ReaderTest
         {
             Nsrs = new List<string>();
         }
-        
+
+        public override string ToString()
+        {
+            return StringLine;
+        }
+
         /// <summary>
         /// Соответствие строки НСР паттерну
         /// </summary>
